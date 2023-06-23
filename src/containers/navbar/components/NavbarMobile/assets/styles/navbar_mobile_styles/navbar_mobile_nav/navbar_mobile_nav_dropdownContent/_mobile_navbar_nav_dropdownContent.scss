@@ -1,0 +1,25 @@
+/* NOTE
+  This style sheet is for Mobile Navbar Drop down content. It's styles are
+  restricted to the 3 navigation categories "Shop", "Media" & "Info".
+
+  This style sheet does NOT include the Mobile Navbar Title section.
+*/
+
+.navbar-mobile-nav-dropdown-content {
+  background-color: $p-blue;;
+  display: block;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  list-style: none;
+  flex-direction: column;
+
+  clear: both;
+  overflow: hidden;
+  opacity: 0;
+  width: 100%;
+  margin: 0;
+  @include prefixed(transition, all .5s ease-in-out);
+  @import './mobile_navbar_nav_dropdown_list';
+}

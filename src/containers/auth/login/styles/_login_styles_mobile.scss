@@ -1,0 +1,372 @@
+@media only screen and (max-width: 930px) {
+// @media only screen and (max-width: 640px) {
+  .sign-in--main {
+    @include prefixflex();
+    justify-content: center;
+    align-items: center;
+    max-width: 640px;
+    width: 100%;
+    .sign-in--container {
+      @include prefixflex();
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      max-width: 64em;
+      width: 100%;
+      margin: 2em auto 2em auto;
+      padding-bottom: 2em;
+      background-color: $s-white;
+      & .sign-in__title {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        height: 6.5em;
+        width: 31.5em;
+        margin-top: 2.5em;
+        & h1 {
+          font-weight: 200;
+        }
+        & h5 {
+          font-weight: 400;
+        }
+      }
+      & .sign-in__error {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 1em;
+        & .error--icon {
+          @include prefixflex();
+          justify-content: center;
+          align-items: center;
+          background-color: $p-red;
+          height: 4.5em;
+          width: 4.5em;
+          span {
+            color: $p-white;
+            font-size: 3em;
+            @include prefixed(transform, rotate(45deg));
+          }
+        }
+        & h5 {
+          margin-top: 1em;
+          padding-left: .5em;
+          color: $p-red;
+          font-weight: 200;
+        }
+      }
+      & .sign-in__form {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        & .sign-in__list {
+          @include prefixflex();
+          justify-content: center;
+          align-items: center;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          & .sign-in__left-break,
+          .sign-in__right-break {
+            // height: 2em;
+            width: 11.5em;
+            border-bottom: 1px solid rgba(0,0,0,.2);
+          }
+          & .title-or {
+            @include prefixflex();
+            justify-content: center;
+            align-items: center;
+            height: 4em;
+            width: 7em;
+            & p {
+              text-transform: uppercase;
+              color: $p-blue;
+              font-weight: 200em;
+              font-size: 1.6em;
+            }
+          }
+        }
+        & .form--email,
+        .form--password {
+          @include prefixflex();
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-direction: column;
+          margin-top: 2em;
+          & .email__input--label,
+          .password__input--label {
+            color: $p-blue;
+            font-size: 1.4em;
+            font-family: $p-font;
+            font-weight: 200;
+            & .required-star {
+              color: $p-red;
+            }
+          }
+          & .email__input--email,
+          .password__input--password {
+            max-width: 25.8em;
+            min-width: 22.08em;
+            height: 2.91em;
+            margin-top: .7em;
+            border: 1px solid $p-grey;
+            font-family: $p-font;
+            color: $p-blue;
+            font-size: 1.2em;
+            padding-left: 1em;
+            &:hover,
+            &:active,
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+      & .form__login-btn {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 2em;
+        & .login-btn {
+          height: 3.12em;
+          width: 15.62em;
+          color: $p-white;
+          font-family: $p-font;
+          font-weight: 400em;
+          font-size: 1.6em;
+          background-color: $p-red;
+          border: none;
+          cursor: pointer;
+          box-shadow: 3px 3px 3px rgba(0,0,0,.25);
+        }
+      }
+      & .form__login-recaptcha {
+        @include prefixflex();
+        justify-content: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+      & .sign-in__social--container {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & .social--title {
+          @include prefixflex();
+          justify-content: center;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          width: 30em;
+          margin: 2em auto;
+          & .social--title-msg {
+            & h5 {
+              font-size: 1.6em;
+              color: $p-blue;
+              font-weight: 800;
+              line-height: 1.5em;
+            }
+          }
+        }
+        & .social--btns__list {
+          @include prefixflex();
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 2em;
+          & .list--container {
+            @include prefixflex();
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-width: 70%;
+            flex-wrap: wrap;
+            & .list--option:nth-child(1) {
+              margin: 0;
+            }
+            & .list--option {
+              @include prefixflex();
+              justify-content: center;
+              align-items: center;
+              height: 6em;
+              width: 6em;
+              background-color: $p-blue;
+              transition: all .5s ease-in-out;
+              cursor: pointer;
+              margin-left: .5em;
+              &:hover,
+              &:active,
+              &:focus {
+                box-shadow: 3px 3px 3px rgba(0,0,0,.25);
+              }
+              & span {
+                color: $p-white;
+                font-size: 4.5em;
+              }
+            }
+            & .list--option.line {
+              & button {
+                @include prefixflex();
+                background-color: #00c300;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                border: none;
+                padding: 0;
+                margin: 0;
+                cursor: pointer;
+                & img {
+                  max-width: 100%;
+                }
+                &:hover {
+                  background-color: #00e000;
+                }
+                &:focus {
+                  outline: none;
+                  background-color: #00b300;
+                }
+              }
+            }
+            & .list--option.facebook {
+              background-color: $p-blue;
+              & button {
+                @include prefixflex();
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100;
+                border: none;
+                background-color: inherit;
+                padding: 0;
+                margin: 0;
+                & span {
+                  color: $p-white;
+                  cursor: pointer;
+                }
+              }
+            }
+            & .list--option.twitter {
+              background-color: #4990E2;
+              & button {
+                @include prefixflex();
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100;
+                border: none;
+                background-color: inherit;
+                padding: 0;
+                margin: 0;
+                & span {
+                  color: $p-white;
+                  cursor: pointer;
+                }
+              }
+            }
+            & .list--option.google {
+              margin-top: .5em;
+              background-color: #DB4437;
+              & button {
+                @include prefixflex();
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100;
+                border: none;
+                background-color: inherit;
+                padding: 0;
+                margin: 0;
+                & span {
+                  color: $p-white;
+                  cursor: pointer;
+                  font-size: 4em;
+                }
+              }
+            }
+            & .list--option.linkedin {
+              margin-top: .5em;
+              background-color: #0077B5;
+              & button {
+                @include prefixflex();
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100;
+                border: none;
+                background-color: inherit;
+                padding: 0;
+                margin: 0;
+                & span {
+                  color: $p-white;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          & .list__forgot-msg {
+            @include prefixflex();
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            margin-top: 1em;
+            & a {
+              color: $p-blue;
+              font-size: 1.4em;
+              font-weight: 200;
+              cursor: pointer;
+              text-decoration: none;
+              font-family: $p-font;
+              &:hover,
+              &:focus,
+              &:active {
+                color: $p-red;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+      & .sign-in__action-btns {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & .action-btns__register,
+        .action-btns__back-to-home {
+          @include prefixflex();
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 2em;
+          & button {
+            height: 3.12em;
+            width: 15.62em;
+            color: $p-white;
+            font-size: 1.6em;
+            font-weight: 400;
+            font-family: $p-font;
+            border: none;
+            background-color: $p-red;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px rgba(0,0,0,.25);
+            & .flex-btn-parent {
+              @include prefixflex();
+              justify-content: center;
+              align-items: center;
+              font-family: $p-font;
+              & span {
+                font-size: 1.56em;
+              }
+            }
+          }
+        }
+        & .action-btns__register {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}

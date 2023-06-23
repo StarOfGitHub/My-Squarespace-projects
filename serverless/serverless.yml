@@ -1,0 +1,140 @@
+service: nj2jp
+
+package:
+  exclude:
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  cfLogs: true
+  timeout: 20
+  stage: ${opt:stage}
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Resource: "*"
+      Action:
+        - ec2:CreateNetworkInterface
+        - ec2:DescribeNetworkInterfaces
+        - ec2:DetachNetworkInterface
+        - ec2:DeleteNetworkInterface
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - ses:SendEmail
+        - ses:SendRawEmail
+        - lambda:InvokeFunction
+  environment:
+    MONGO_URI: ${file(./config.${self:provider.stage}.yml):mongoURI}
+    AUTH0_JWT_SECRET: ${file(./config.${self:provider.stage}.yml):auth0JwtSecret}
+    MARKET_HERO_API_KEY: ${file(./config.${self:provider.stage}.yml):marketHeroApiKey}
+    SQUARE_ENV: ${file(./config.${self:provider.stage}.yml):squareEnv}
+    US_SQUARE_LOCATION: ${file(./config.${self:provider.stage}.yml):usSquareLocation}
+    US_SQUARE_ACCESS_TOKEN: ${file(./config.${self:provider.stage}.yml):usSquareAccessToken}
+    US_SQUARE_APPLICATION_ID: ${file(./config.${self:provider.stage}.yml):usSquareApplicationId}
+    JP_SQUARE_LOCATION: ${file(./config.${self:provider.stage}.yml):jpSquareLocation}
+    JP_SQUARE_ACCESS_TOKEN: ${file(./config.${self:provider.stage}.yml):jpSquareAccessToken}
+    JP_SQUARE_APPLICATION_ID: ${file(./config.${self:provider.stage}.yml):jpSquareApplicationId}
+    JWT_SECRET: ${file(./config.${self:provider.stage}.yml):jwtSecret}
+    SAGAWA_ENV: ${file(./config.${self:provider.stage}.yml):sagawaEnv}
+    SAGAWA_JAPANESE: ${file(./config.${self:provider.stage}.yml):sagawaJapanese}
+    SAGAWA_ENGLISH: ${file(./config.${self:provider.stage}.yml):sagawaEnglish}
+    SLACK_SUPPORT_WEBHOOK: ${file(./config.${self:provider.stage}.yml):slackSupportWebhook}
+    SLACK_ERROR_NOTIFICATION_WEBHOOK: ${file(./config.${self:provider.stage}.yml):slackErrorNotificationWebhook}
+    SLACK_GENERAL_NOTIFICATION_WEBHOOK: ${file(./config.${self:provider.stage}.yml):slackGeneralNotificationWebhook}
+    LAMBDA_ENV: ${file(./config.${self:provider.stage}.yml):lambdaEnv}
+    LAMBDA_SECRET_ACCESS_KEY: ${file(./config.${self:provider.stage}.yml):lambdaSecretAccessKey}
+    LAMBDA_ACCESS_KEY_ID: ${file(./config.${self:provider.stage}.yml):lambdaAccessKeyId}
+    BASE_URL: ${file(./config.${self:provider.stage}.yml):baseUrl}
+    CEO_EMAIL: ${file(./config.${self:provider.stage}.yml):ceoEmail}
+    CTO_EMAIL: ${file(./config.${self:provider.stage}.yml):ctoEmail}
+    CDO_EMAIL: ${file(./config.${self:provider.stage}.yml):cdoEmail}
+    AWS_SES_REGION: ${file(./config.${self:provider.stage}.yml):awsSesRegion}
+    RECAPTCHA_SECRET_KEY: ${file(./config.${self:provider.stage}.yml):recaptchaSecretKey}
+    SAGAWA_SHIPPER_1: ${file(./config.${self:provider.stage}.yml):shipper1}
+    # SAGAWA_SHIPPER_2: ${file(./config.${self:provider.stage}.yml):shipper2}
+    # SAGAWA_SHIPPER_3: ${file(./config.${self:provider.stage}.yml):shipper3}
+    # SAGAWA_SHIPPER_4: ${file(./config.${self:provider.stage}.yml):shipper4}
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules: true # enable auto including node_modules
+  graphiql:
+    babelOptions:
+      presets: [es2015, es2016, stage-0]
+      plugins: [transform-runtime]
+
+functions:
+  graphql:
+    handler: handler.graphql
+    memorySize: 1024
+    timeout: 20
+    vpc:
+      securityGroupIds:
+        - ${file(./config.${self:provider.stage}.yml):securityGroupId}
+      subnetIds:
+        - ${file(./config.${self:provider.stage}.yml):subnetId}
+    iamRoleStatements:
+      - Effect: Allow
+        Resource: "*"
+        Action:
+          - ec2:CreateNetworkInterface
+          - ec2:DescribeNetworkInterfaces
+          - ec2:DetachNetworkInterface
+          - ec2:DeleteNetworkInterface
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - ses:SendEmail
+          - ses:SendRawEmail
+          - lambda:InvokeFunction
+    events:
+      - http:
+          path: graphql
+          method: post
+          integration: lambda
+          cors: true
+          response:
+            headers:
+              Access-Control-Allow-Origin: "'*'"
+
+  sagawa:
+    handler: handler.sagawa
+    memorySize: 1024
+    timeout: 20
+    vpc:
+      securityGroupIds:
+        - ${file(./config.${self:provider.stage}.yml):securityGroupId}
+      subnetIds:
+        - ${file(./config.${self:provider.stage}.yml):subnetId}
+    iamRoleStatements:
+      - Effect: Allow
+        Resource: "*"
+        Action:
+          - ec2:CreateNetworkInterface
+          - ec2:DescribeNetworkInterfaces
+          - ec2:DetachNetworkInterface
+          - ec2:DeleteNetworkInterface
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - ses:SendEmail
+          - ses:SendRawEmail
+          - lambda:InvokeFunction
+    events:
+      - schedule:
+          name: ${self:provider.stage}-weekly-upload
+          description: Upload weekend orders to sagawa
+          rate: cron(0 13 ? * MON *)
+          enabled: true
+          input:
+            type: weekly upload
+      - schedule:
+          name: ${self:provider.stage}-notify-sagawa
+          description: Send mail to sagawa of pending orders
+          rate: cron(0 14 * * ? *)
+          enabled: true
+          input:
+            type: notify sagawa

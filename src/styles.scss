@@ -1,0 +1,137 @@
+@import "styles/images";
+@import "styles/colors";
+@import "styles/mixins";
+@import "styles/options";
+@import "styles/hacks";
+@import "styles/typography";
+@import "styles/transitions";
+@import "styles/elements";
+
+// ------------------------------------------------------------
+// -------------------------- Utilities------------------------
+// ------------------------------------------------------------
+// "Age Verification" Master Stylesheets
+@import "containers/ageVerification/ageVerification_web";
+@import "containers/ageVerification/ageVerification_mobile";
+
+// // "Navbar" Master Stylesheets
+// @import "containers/navbar/components/NavbarWeb/assets/styles/styles";
+@import "containers/navbar/components/NavbarMobile/assets/styles/styles";
+
+// ------------------------------------------------------------
+// "404" Master Stylesheets
+// @import "containers/404/404_styles_web";
+// @import "containers/ageVerification/ageVerification_mobile";
+
+
+// ------------------------------------------------------------
+// --------------------------- Auth ---------------------------
+// ------------------------------------------------------------
+// "Login" Master Stylesheets
+@import "containers/auth/login/styles/login_styles_web";
+@import "containers/auth/login/styles/login_styles_mobile";
+
+// ------------------------------------------------------------
+// "Register" Master Stylesheets
+@import "containers/auth/register/register_styles_web";
+@import "containers/auth/register/register_styles_mobile";
+
+// ------------------------------------------------------------
+// "Forgot" Master Stylesheets
+@import "containers/auth/forgot/forgot_styles_web";
+@import "containers/auth/forgot/forgot_styles_mobile";
+
+// ------------------------------------------------------------
+// "Reset Password" Master Stylesheets
+@import "containers/auth/resetEmail/reset_styles_web";
+@import "containers/auth/resetEmail/reset_styles_mobile";
+
+// ------------------------------------------------------------
+// -------------------------- Products ------------------------
+// ------------------------------------------------------------
+// "Homepage" Master Stylesheets
+// @import "containers/home/assets/styles/styles_web";
+// @import "containers/home/assets/styles/styles_mobile";
+
+// ------------------------------------------------------------
+// "Single Product" Master Stylesheets
+// @import "containers/products/components/singleProduct/styles/styles_web";
+// @import "containers/products/components/singleProduct/styles/styles_mobile";
+
+// ------------------------------------------------------------
+// "All Products" Master Stylesheets
+@import "containers/products/styles/products_all_styles_web";
+@import "containers/products/styles/products_all_styles_mobile";
+
+// ------------------------------------------------------------
+// -------------------------- Checkout ------------------------
+// ------------------------------------------------------------
+// "Cart" Master Stylesheets
+// @import "containers/cart/assets/styles/cart_styles_web";
+// @import "containers/cart/assets/styles/cart_styles_mobile";
+
+// ------------------------------------------------------------
+// "Checkout" Master Stylesheets
+@import "containers/checkout/expressCheckout_styles_web";
+@import "containers/checkout/expressCheckout_styles_mobile";
+
+// ------------------------------------------------------------
+// "Order Success" Master Stylesheets
+@import "containers/checkout/orderSuccess_styles_web";
+@import "containers/checkout/orderSuccess_styles_mobile";
+
+// ------------------------------------------------------------
+// "Tracking Page" Master Stylesheets
+@import "containers/tracking/styles/tracking_styles_web";
+@import "containers/tracking/styles/tracking_styles_mobile";
+
+// ------------------------------------------------------------
+// ------------------------ Dashboards ------------------------
+// ------------------------------------------------------------
+// "User Dashboard" Master Stylesheets
+@import "containers/userDashboard/userDashStyles/userDashboard_styles_web";
+@import "containers/userDashboard/userDashStyles/userDashboard_styles_mobile";
+// ------------------------------------------------------------
+// "Admin Dashboard" Master Stylesheets
+@import "containers/adminDashboard/adminDashStyles/adminDashboard_styles_web";
+@import "containers/adminDashboard/adminDashStyles/adminDashboard_styles_mobile";
+
+// ------------------------------------------------------------
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 10px;
+  background-color: #FFFFFF;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $p-white;
+}
+
+.hide {
+  display: none;
+}
+
+button {
+  border-radius: 0px;
+}
+
+@media (min-width: 931px) {
+  #main-section {
+    @include prefixflex();
+    justify-content: center;
+    // padding-top: 12rem;
+    min-height: 55rem;
+  }
+}
+
+@media (max-width: 930px) {
+  #main-section {
+    @include prefixflex();
+    justify-content: center;
+  }
+}

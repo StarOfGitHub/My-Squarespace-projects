@@ -1,0 +1,42 @@
+.actions__notSignedIn--list {
+  @extend .mobile-flex-center;
+  justify-content: flex-end;
+  align-items: center;;
+  margin: 0em;
+  list-style-type: none;
+  padding: 0em 1em 0em 1em;
+  & .list--login {
+    @extend .mobile-flex-center;
+    background-color: $p-blue;
+    font-family: $p-font;
+    font-weight: 200;
+    font-size: 1.5em;
+    width: 5em;
+    height: 2em;
+    cursor: pointer;
+    margin-left: .5em;
+    &:hover,
+    &:active,
+    &:focus {
+      transition: .5s;
+      background-color: $p-blue;
+      & a {
+        color: $p-white;
+      }
+    }
+    & .login__link {
+      color: $p-white;
+      text-decoration: none;
+    }
+  }
+  // & .list--login:after {
+  //   content: '';
+  //   display: inline-block;
+  //   width: .1rem;
+  //   height: 2rem;
+  //   margin-bottom: -.3rem;
+  //   margin-left: 4rem;
+  //   position: absolute;
+  //   background-color: rgba(255, 255, 255, 0.5);
+  // }
+}

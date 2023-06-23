@@ -1,0 +1,20 @@
+# nodeJS stuff
+node_modules
+
+# Build files
+dist
+public
+
+# serverless
+.serverless
+config.troubleshoot.yml
+config.production.yml
+
+# miscellaneous
+.DS_Store
+.sass-cache
+.env
+.dev-server-env
+npm-debug.log
+_syntax_tests.js
+lambdaOutput.json

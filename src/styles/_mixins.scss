@@ -1,0 +1,92 @@
+@import "./options";
+
+@mixin prefixed($property, $values) {
+  @if $webkit == true {
+    -webkit-#{$property}: #{$values};
+  }
+  @if $moz == true {
+    -moz-#{$property}: #{$values};
+  }
+  @if $ms == true {
+    -ms-#{$property}: #{$values};
+  }
+  @if $o == true {
+    -o-#{$property}: #{$values};
+  }
+
+  #{$property}: #{$values};
+
+}
+
+@mixin prefixflex() {
+  @if $webkit == true {
+    display: -webkit-box;
+    display: -webkit-flex;
+  }
+  @if $moz == true {
+    display: -moz-box;
+  }
+  @if $ms == true {
+    display: -ms-flexbox
+  }
+
+  display: flex;
+}
+
+@mixin prefixflex-child() {
+  @if $webkit == true {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+  }
+  @if $moz == true {
+    -moz-box-flex: 1;
+  }
+  @if $ms == true {
+    -ms-flex: 1;
+  }
+  flex: 1;
+}
+
+@mixin prefix-child-custom($grow, $shrink, $basis) {
+  @if $webkit == true {
+    -webkit-box-flex: $grow $shrink $basis;
+    -webkit-flex: $grow $shrink $basis;
+  }
+  @if $moz == true {
+    -moz-box-flex: $grow $shrink $basis;
+  }
+  @if $ms == true {
+    -ms-flex: $grow $shrink $basis;
+  }
+  flex: $grow $shrink $basis;
+}
+
+@mixin keyframes($name) {
+  @if $webkit == true {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $moz == true {
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $ms == true {
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $o == true {
+    @-o-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}

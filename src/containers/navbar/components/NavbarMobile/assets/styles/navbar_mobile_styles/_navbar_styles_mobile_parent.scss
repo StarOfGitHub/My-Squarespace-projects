@@ -1,0 +1,68 @@
+.hidden {
+  display: none;
+}
+.mobile-flex-center {
+  @include prefixflex();
+  justify-content: center;
+  align-items: center;
+}
+.mobile-flex-right {
+  @include prefixflex();
+  justify-content: flex-end;
+  align-items: center;
+}
+.mobile-flex-left {
+  @include prefixflex();
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar.navbar-web {
+  display: none;
+}
+body {
+  @include prefixflex();
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+  padding: 7px;
+  box-sizing: border-box;
+}
+nav.navbar__mobile {
+  height: 26em;
+  width: 100%;
+  background-color: $p-white;
+  & .navbar__mobile--container {
+    & .navbar__mobile--logo {
+      @extend .mobile-flex-center;
+      height: 10em;
+      background-color: $p-blue;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      & .logo--src {
+        max-width: 20em;
+        content: $main-logo;
+      }
+    }
+    & .navbar__mobile--options {
+      @extend .mobile-flex-center;
+      height: 5em;
+      width: 100%;
+      background-color: $p-blue;
+    }
+    & .navbar__mobile--actions {
+      height: 5em;
+      width: 100%;
+      background-color: $p-blue;
+      border-bottom: 1px solid rgba(255,255,255, .1);
+    }
+    & .navbar__mobile--nav {
+      display: inline-block;
+      position: relative;
+      height: 6em;
+      width: 100%;
+      background-color: $p-blue;
+    }
+  }
+}
+@import './navbar_mobile_options/mobile_navbar_options';
+@import './navbar_mobile_userActions/mobile_navbar_userActions';
+@import './navbar_mobile_nav/navbar_mobile_nav_main/mobile_navbar_nav_main';
+@import './navbar_mobile_nav/navbar_mobile_nav_dropdownContent/mobile_navbar_nav_dropdownContent';

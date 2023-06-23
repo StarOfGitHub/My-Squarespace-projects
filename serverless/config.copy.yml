@@ -1,0 +1,45 @@
+############################ GENERAL SETTINGS ############################
+#----- API Environments -----#
+squareEnv: <SQUARE_ENV>
+lambdaEnv: <LAMBDA_ENV>
+sagawaEnv: <SAGAWA_ENV>
+#----- VPC Settings -----#
+subnetId: subnet-xxxxxx
+securityGroupId: sg-xxxxxxx
+mongoURI: mongodb://<DB>:<PASSWORD>@<MONGO_ATLAST_CLUSTER_NAME>.mongodb.net:27017,<MONGO_ATLAST_CLUSTER_NAME_OTHER>.mongodb.net:27017,<MONGO_ATLAST_CLUSTER_NAME_OTHER>.mongodb.net:27017/<MONGO_ATLAST_CLUSTER_NAME_OTHER>?ssl=true&replicaSet=<MONGO_ATLAST_CLUSTER_NAME_OTHER>&authSource=admin
+#--------------- DOMAINS ---------------#
+baseUrl: <BASE_URL>
+
+#--------------- EMAIL ADDRESSES ---------------#
+ctoEmail: <CTO_MAILID>
+ceoEmail: <CEO_MAILID>
+cdoEmail: <CDO_MAILID>
+################################# API SETTINGS ###########################
+#--------------- AUTH 0 ---------------#
+auth0JwtSecret: <AUTH0_JWT_SECRET>
+#--------------- MARKET HERO ---------------#
+marketHeroApiKey: <MARKETHERO_API_KEY>
+#--------------- Recaptcha ---------------#
+recaptchaSecretKey: <RECAPTCHA_SECRET_KEY>
+#--------------- AWS ---------------#
+awsSesRegion: <AWS_SES_REGION>
+lambdaSecretAccessKey: <SECRET_ACCESS_KEY>
+lambdaAccessKeyId: <ACCESS_KEY_ID>
+#--------------- SQUARE ---------------#
+# USA
+usSquareLocation: <US_SQUARE_LOCATION>
+usSquareAccessToken: <US_SQUARE_ACCESS_TOKEN>
+usSquareApplicationId: <US_SQUARE_APPLICATION_ID>
+# JAPAN
+jpSquareLocation: <JP_SQUARE_LOCATION>
+jpSquareAccessToken: <JP_SQUARE_ACCESS_TOKEN>
+jpSquareApplicationId: <JP_SQUARE_APPLICATION_ID>
+#--------------- JWT TRACKING TOKEN ---------------#
+jwtSecret: <JWT_TRACKING_SECRET>
+#--------------- SAGAWA ---------------#
+sagawaJapanese: <SAGAWA_JAPANESE>
+sagawaEnglish: <SAGAWA_ENGLISH>
+#--------------- SLACK ---------------#
+slackSupportWebhook: <SLACK_SUPPORT_WEBHOOK>
+slackErrorNotificationWebhook: <SLACK_ERROR_NOTIFICATION_WEBHOOK>
+slackGeneralNotificationWebhook: <SLACK_GENERAL_NOTIFICATION_WEBHOOK>

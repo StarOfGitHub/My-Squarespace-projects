@@ -1,0 +1,274 @@
+.shutter-out-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+  background-color: $p-red;
+  @include prefixed(transition-property, color);
+  @include prefixed(transition-duration, .3s);
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+
+    &:before {
+      @include prefixed(transform, scaleX(1));
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:$p-blue;
+    @include prefixed(transform, scaleX(0));
+    @include prefixed(transform-origin, 50%);
+    @include prefixed(transition-property, transform);
+    @include prefixed(transition-duration, .3s);
+    @include prefixed(transition-timing-function, ease-out);
+  }
+}
+.sweep-right {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+  @include prefixed(transition-property, color);
+  @include prefixed(transition-duration, .3s);
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .5s;
+    background-color: $p-blue;
+    &:before {
+      @include prefixed(transform, scaleX(1));
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:$p-blue;
+    @include prefixed(transform, scaleX(0));
+    @include prefixed(transform-origin, 0 50%);
+    @include prefixed(transition-property, transform);
+    @include prefixed(transition-duration, .3s);
+    @include prefixed(transition-timing-function, ease-out);
+  }
+}
+.sweep-right-red {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+  @include prefixed(transition-property, color);
+  @include prefixed(transition-duration, .3s);
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .5s;
+    background-color: $p-red;
+    &:before {
+      @include prefixed(transform, scaleX(1));
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $p-red;
+    @include prefixed(transform, scaleX(0));
+    @include prefixed(transform-origin, 0 50%);
+    @include prefixed(transition-property, transform);
+    @include prefixed(transition-duration, .3s);
+    @include prefixed(transition-timing-function, ease-out);
+  }
+}
+.sweep-right-white {
+  display: inline-block;
+  vertical-align: middle;
+
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+
+  @include prefixed(transition-property, color);
+  @include prefixed(transition-duration, .3s);
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $p-white;
+    color: $p-blue;
+    &:before {
+      @include prefixed(transform, scaleX(1));
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:$p-white;
+    @include prefixed(transform, scaleX(0));
+    @include prefixed(transform-origin, 0 50%);
+    @include prefixed(transition-property, transform);
+    @include prefixed(transition-duration, .3s);
+    @include prefixed(transition-timing-function, ease-out);
+  }
+}
+
+@include keyframes(#{$nameSpace}-bob) {
+	0% {
+		@include prefixed(transform, translateY(-8px));
+	}
+	50% {
+		@include prefixed(transform, translateY(-4px));
+	}
+	100% {
+		@include prefixed(transform, translateY(-8px));
+	}
+}
+@include keyframes(bob) {
+	0% {
+		@include prefixed(transform, translateY(-5px));
+	}
+	50% {
+		@include prefixed(transform, translateY(2px));
+	}
+	100% {
+		@include prefixed(transform, translateY(-5px));
+	}
+}
+
+@include keyframes(#{$nameSpace}-bob-float) {
+	100% {
+		@include prefixed(transform, translateY(-8px));
+	}
+}
+
+@include keyframes(bob-float) {
+	100% {
+		@include prefixed(transform, translateY(-5px));
+	}
+}
+
+@include keyframes(pulse) {
+  0%, 70% {
+    box-shadow: 0px 0px 0px 0px rgb(252, 37, 37);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 50px rgba(252, 37, 37, 0);
+  }
+}
+@include keyframes(#{$nameSpace}-dropin) {
+	0% {
+		opacity: 0;
+
+	}
+
+	50% {
+		opacity: 0;
+		@include prefixed(transform, translateY(-200%));
+	}
+
+	51%,
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Icon Drop */
+.hover-dropin {
+	@include hacks();
+	position: relative;
+  // top: -3em;
+	padding-left: .5em;
+
+  @include prefixed(transform, translateZ(0));
+  @include prefixed(transition-duration, #{$slowDuration});
+  @include prefixed(animation-name, #{$nameSpace}-dropin);
+  @include prefixed(animation-duration, .6s);
+  @include prefixed(animation-delay, #{$mediumDuration});
+  @include prefixed(animation-fill-mode, forwards);
+  @include prefixed(animation-timing-function, ease-in-out);
+  @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+}
+.hover-bob {
+  @include hacks();
+
+	&:hover,
+	&:focus,
+	&:active {
+		@include prefixed(animation-name, "#{$nameSpace}-bob-float, #{$nameSpace}-bob");
+		@include prefixed(animation-duration, ".3s, 1.5s");
+		@include prefixed(animation-delay, "0s, .3s");
+		@include prefixed(animation-timing-function, "ease-out, ease-in-out");
+		@include prefixed(animation-iteration-count, "1, infinite");
+		@include prefixed(animation-fill-mode, "forwards");
+		@include prefixed(animation-direction, "normal, alternate");
+	}
+}
+.hover-bob-active {
+  @include hacks();
+  @include prefixed(animation-name, "#{$nameSpace}-bob-float, #{$nameSpace}-bob");
+  @include prefixed(animation-duration, ".3s, 1.5s");
+  @include prefixed(animation-delay, "0s, .3s");
+  @include prefixed(animation-timing-function, "ease-out, ease-in-out");
+  @include prefixed(animation-iteration-count, "1, infinite");
+  @include prefixed(animation-fill-mode, "forwards");
+  @include prefixed(animation-direction, "normal, alternate");
+}
+.hover-float {
+  @include hacks();
+  @include prefixed(transition-duration, .3s);
+	@include prefixed(transition-property, transform);
+	@include prefixed(transition-timing-function, ease-out);
+
+	&:hover,
+	&:focus,
+	&:active {
+		@include prefixed(transform, translateY(-8px));
+	}
+}
+.ping-nav {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.bob {
+  @include hacks();
+  @include prefixed(animation-name, "bob-float, bob");
+  @include prefixed(animation-duration, ".3s, 1.5s");
+  @include prefixed(animation-delay, "0s, .3s");
+  @include prefixed(animation-timing-function, "ease-out, ease-in-out");
+  @include prefixed(animation-iteration-count, "1, infinite");
+  @include prefixed(animation-fill-mode, "forwards");
+  @include prefixed(animation-direction, "normal, alternate");
+	&:focus,
+	&:active {
+		@include prefixed(animation-name, "bob-float, bob");
+		@include prefixed(animation-duration, ".3s, 1.5s");
+		@include prefixed(animation-delay, "0s, .3s");
+		@include prefixed(animation-timing-function, "ease-out, ease-in-out");
+		@include prefixed(animation-iteration-count, "1, infinite");
+		@include prefixed(animation-fill-mode, "forwards");
+		@include prefixed(animation-direction, "normal, alternate");
+	}
+}

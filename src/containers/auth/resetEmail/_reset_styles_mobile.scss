@@ -1,0 +1,89 @@
+@media only screen and (max-width: 930px) {
+// @media only screen and (max-width: 640px) {
+  .reset--main {
+    @include prefixflex();
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1086px;
+    width: 100%;
+    & .reset--container {
+      @include prefixflex();
+      justify-content: center;
+      align-items: center;
+      margin: 2em auto 2em auto;
+      & .reset__verify,
+      .reset__success {
+        @include prefixflex();
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & .verify,
+        .success {
+          @include prefixflex();
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          & .verify__top,
+          .success__top {
+            @include prefixflex();
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1em;
+            & .verify__icon,
+            .success__icon {
+              @include prefixflex();
+              justify-content: center;
+              align-items: center;
+              height: 10em;
+              width: 10em;
+              background-color: $p-blue;
+              padding: 1em;
+              & span {
+                color: $p-white;
+                font-size: 10em;
+                line-height: 1em;
+              }
+            }
+            & .verify__title,
+            .success__title {
+              @include prefixflex();
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              & h1 {
+                text-align: center;
+                margin-top: .5em;
+              }
+              & h4 {
+                margin-top: 1em;
+                line-height: 2em;
+              }
+            }
+          }
+          & .verify__action-btns,
+          .success__btn {
+            @include prefixflex();
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            & button {
+              margin-top: 3em;
+              height: 3.75em;
+              width: 80%;
+              color: $p-white;
+              font-size: 1.6em;
+              font-weight: 400;
+              font-family: $p-font;
+              border: none;
+              background-color: $p-red;
+              cursor: pointer;
+              box-shadow: 3px 3px 3px rgba(0,0,0,.25);
+            }
+          }
+        }
+      }
+    }
+  }
+}
